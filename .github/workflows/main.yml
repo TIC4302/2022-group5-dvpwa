@@ -63,7 +63,7 @@ jobs:
           name: logs
           path: logs/bandit.log
     
-   Image Scan:
+   image-scan:
      needs: [sast]
      runs-on: ubuntu-latest
 
