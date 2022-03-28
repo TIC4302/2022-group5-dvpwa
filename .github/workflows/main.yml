@@ -34,7 +34,13 @@ jobs:
          run: pip install safety
 
        - name: Safety scan
-         run: safety check
+         run: safety check > logs/safety.log
+         continue-on-error: true
+
+       - uses: actions/upload-artifact@v2
+         with: 
+          name: logs
+          path: logs/safety.log
 
    sast:
      needs: [build, sca]
