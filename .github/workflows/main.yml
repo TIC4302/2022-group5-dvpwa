@@ -37,8 +37,8 @@ jobs:
 
        - name: Pyraider
          run: |
-           pip3 install pyraider
-           pyraider go > logs/safety.log
+           pip install safety
+           safety check > logs/safety.log
        - uses: actions/upload-artifact@v2
          with: 
           name: logs
