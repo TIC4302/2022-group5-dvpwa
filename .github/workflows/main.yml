@@ -27,10 +27,20 @@ jobs:
        - name: Check imgages
          run: docker images
 
-       - name: Run Trivy vulnerability scanner
+       - name: Run Trivy scan on app
          uses: aquasecurity/trivy-action@master
          with:
           image-ref: '2022-group5-dvpwa_sqli'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
+       - name: Run Trivy scan on db
+         uses: aquasecurity/trivy-action@master
+         with:
+          image-ref: '2022-group5-dvpwa_postgres'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
