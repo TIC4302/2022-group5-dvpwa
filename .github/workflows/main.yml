@@ -20,10 +20,10 @@ jobs:
 
      steps: 
        - name: Build App
-         run: docker image build --file Dockerfile.app
+         run: docker image build . --file Dockerfile.app
 
        - name: Build DB
-         run: docker image build --file Dockerfile.db
+         run: docker image build . --file Dockerfile.db
 
 
        - name: Check imgages
