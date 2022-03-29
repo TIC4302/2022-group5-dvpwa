@@ -13,15 +13,15 @@ jobs:
 
        - name: Build docker-compose
          run: docker-compose -f docker-compose.yml up --build -d
-
-       - name: Check imgages
-         run: docker images
     
    image-scan:
      needs: [build]
      runs-on: ubuntu-latest
 
      steps: 
+       - name: Check imgages
+         run: docker images
+
        - name: Run Trivy vulnerability scanner
          uses: aquasecurity/trivy-action@master
          with:
