@@ -19,6 +19,13 @@ jobs:
      runs-on: ubuntu-latest
 
      steps: 
+       - name: Build App
+         run: docker image build -f Dockerfile.app
+
+       - name: Build DB
+         run: docker image build -f Dockerfile.db
+
+
        - name: Check imgages
          run: docker images
 
