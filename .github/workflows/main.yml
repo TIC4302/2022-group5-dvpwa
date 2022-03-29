@@ -18,7 +18,12 @@ jobs:
      needs: [build]
      runs-on: ubuntu-latest
 
+     - uses: actions/checkout@v2
+       
+
      steps: 
+       - uses: actions/checkout@v2
+
        - name: Build App
          run: docker image build . --file Dockerfile.app
 
