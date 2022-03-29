@@ -18,9 +18,6 @@ jobs:
      needs: [build]
      runs-on: ubuntu-latest
 
-     - uses: actions/checkout@v2
-       
-
      steps: 
        - uses: actions/checkout@v2
 
