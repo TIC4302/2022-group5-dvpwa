@@ -82,7 +82,7 @@ jobs:
            path: dockle-report.json
 
    dast:
-     needs: [build]
+     needs: [image-scan]
      runs-on: ubuntu-latest
 
      steps:
@@ -92,7 +92,7 @@ jobs:
         run: docker-compose -f docker-compose.yml up --build -d
 
       - name: ZAP Scan
-        uses: zaproxy/action-full-scan@v0.6.1
+        uses: zaproxy/action-full-scan@v0.3.0
         with:
           target: 'http://localhost:8080'
           cmd_options: '-a -l FAIL'
