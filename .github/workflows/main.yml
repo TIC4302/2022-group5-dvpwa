@@ -54,12 +54,19 @@ jobs:
      runs-on: ubuntu-latest
   
      steps:
-       - name: Run Dockle
+       - name: Run Dockle on App
          uses: erzz/dockle-action@v1.1.1
          with:
-           image: mtahgg/tic4302-project
+           image: mtahgg/tic4302-project:app
            report-format: json
-           report-name: dockle-report
+           report-name: dockle-report-app
+
+       - name: Run Dockle on DB
+         uses: erzz/dockle-action@v1.1.1
+         with:
+           image: mtahgg/tic4302-project:db
+           report-format: json
+           report-name: dockle-report-db
           
        - name: Upload Report
          uses: actions/upload-artifact@v2
