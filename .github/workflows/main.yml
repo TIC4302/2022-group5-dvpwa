@@ -63,7 +63,7 @@ jobs:
        - name: Run Dockle on App
          uses: erzz/dockle-action@v1.2.0
          with:
-           image: mtahgg/tic4302-project:app
+           image: mtahgg/tic4302-project
            report-format: json
            report-name: dockle-report-app
 
