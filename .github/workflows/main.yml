@@ -39,7 +39,7 @@ jobs:
            context: .
            file: Dockerfile.app
            push: true
-           tags: mtahgg/4302-project:latest
+           tags: mtahgg/4302-project:app
 
        - name: Build and push DB
          uses: docker/build-push-action@v2
@@ -47,7 +47,7 @@ jobs:
            context: .
            file: Dockerfile.db
            push: true
-           tags: mtahgg/4302-project:latest
+           tags: mtahgg/4302-project:db
 
    image-scan:
      needs: [deploy]
