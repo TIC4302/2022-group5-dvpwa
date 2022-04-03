@@ -55,14 +55,14 @@ jobs:
   
      steps:
        - name: Run Dockle on App
-         uses: erzz/dockle-action@v1.1.1
+         uses: erzz/dockle-action@v1.2.0
          with:
            image: mtahgg/tic4302-project:app
            report-format: json
            report-name: dockle-report-app
 
        - name: Run Dockle on DB
-         uses: erzz/dockle-action@v1.1.1
+         uses: erzz/dockle-action@v1.2.0
          with:
            image: mtahgg/tic4302-project:db
            report-format: json
