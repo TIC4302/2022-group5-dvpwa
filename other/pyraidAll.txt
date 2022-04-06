@@ -1,0 +1,206 @@
+
+  _____       _____       _     _
+ |  __ \     |  __ \     (_)   | |
+ | |__) |   _| |__) |__ _ _  __| | ___ _ __
+ |  ___/ | | |  _  // _` | |/ _` |/ _ \ '__|
+ | |   | |_| | | \ \ (_| | | (_| |  __/ |
+ |_|    \__, |_|  \_\__,_|_|\__,_|\___|_|
+         __/ |
+        |___/
+
+by TilakThimmappa version 1.0.19
+
+Started Scanning .....
+
+
+
+
++-----------------+------------------------------------------------------------+
+|     Package     |                           safety                           |
++-----------------+------------------------------------------------------------+
+|    Severity     |                            LOW                             |
++-----------------+------------------------------------------------------------+
+|       CWE       |                       NVD-CWE-noinfo                       |
++-----------------+------------------------------------------------------------+
+|       CVE       |                       CVE-2020-5252                        |
++-----------------+------------------------------------------------------------+
+| Current version |                           1.10.3                           |
++-----------------+------------------------------------------------------------+
+|    Update To    |                   Package is up to date                    |
++-----------------+------------------------------------------------------------+
+|   Description   | The command-line "safety" package for Python has a potenti |
+|                 | al security issue. There are two Python characteristics th |
+|                 | at allow malicious code to “poison-pill” command-line Safe |
+|                 | ty package detection routines by disguising, or obfuscatin |
+|                 | g, other malicious or non-secure packages. This vulnerabil |
+|                 | ity is considered to be of low severity because the attack |
+|                 |  makes use of an existing Python condition, not the Safety |
+|                 |  tool itself. This can happen if: You are running Safety i |
+|                 | n a Python environment that you don’t trust. You are runni |
+|                 | ng Safety from the same Python environment where you have  |
+|                 | your dependencies installed. Dependency packages are being |
+|                 |  installed arbitrarily or without proper verification. Use |
+|                 | rs can mitigate this issue by doing any of the following:  |
+|                 | Perform a static analysis by installing Docker and running |
+|                 |  the Safety Docker image: $ docker run --rm -it pyupio/saf |
+|                 | ety check -r requirements.txt Run Safety against a static  |
+|                 | dependencies list, such as the requirements.txt file, in a |
+|                 |  separate, clean Python environment. Run Safety from a Con |
+|                 | tinuous Integration pipeline. Use PyUp.io, which runs Safe |
+|                 | ty in a controlled environment and checks Python for depen |
+|                 | dencies without any need to install them. Use PyUp's Onlin |
+|                 |                  e Requirements Checker.                   |
++-----------------+------------------------------------------------------------+
+|  Dependency Of  |                           safety                           |
++-----------------+------------------------------------------------------------+
+|     Resolve     |                 pip install safety==1.10.3                 |
++-----------------+------------------------------------------------------------+
+|    More Info    |       https://nvd.nist.gov/vuln/detail/CVE-2020-5252       |
++-----------------+------------------------------------------------------------+
+
+
++-----------------+------------------------------------------------------------+
+|     Package     |                           pyyaml                           |
++-----------------+------------------------------------------------------------+
+|    Severity     |                            HIGH                            |
++-----------------+------------------------------------------------------------+
+|       CWE       |                             20                             |
++-----------------+------------------------------------------------------------+
+|       CVE       |                       CVE-2020-1747                        |
++-----------------+------------------------------------------------------------+
+| Current version |                            5.4                             |
++-----------------+------------------------------------------------------------+
+|    Update To    |                            6.0                             |
++-----------------+------------------------------------------------------------+
+|   Description   | A vulnerability was discovered in the PyYAML library in ve |
+|                 | rsions before 5.3.1, where it is susceptible to arbitrary  |
+|                 | code execution when it processes untrusted YAML files thro |
+|                 | ugh the full_load method or with the FullLoader loader. Ap |
+|                 | plications that use the library to process untrusted input |
+|                 |  may be vulnerable to this flaw. An attacker could use thi |
+|                 | s flaw to execute arbitrary code on the system by abusing  |
+|                 |             the python/object/new constructor.             |
++-----------------+------------------------------------------------------------+
+|  Dependency Of  |                           pyyaml                           |
++-----------------+------------------------------------------------------------+
+|     Resolve     |                  pip install pyyaml==6.0                   |
++-----------------+------------------------------------------------------------+
+|    More Info    |       https://nvd.nist.gov/vuln/detail/CVE-2020-1747       |
++-----------------+------------------------------------------------------------+
+
+
++-----------------+------------------------------------------------------------+
+|     Package     |                          aiohttp                           |
++-----------------+------------------------------------------------------------+
+|    Severity     |                           MEDIUM                           |
++-----------------+------------------------------------------------------------+
+|       CWE       |                            601                             |
++-----------------+------------------------------------------------------------+
+|       CVE       |                       CVE-2021-21330                       |
++-----------------+------------------------------------------------------------+
+| Current version |                           3.8.0                            |
++-----------------+------------------------------------------------------------+
+|    Update To    |                          4.0.0a1                           |
++-----------------+------------------------------------------------------------+
+|   Description   | aiohttp is an asynchronous HTTP client/server framework fo |
+|                 | r asyncio and Python. In aiohttp before version 3.7.4 ther |
+|                 | e is an open redirect vulnerability. A maliciously crafted |
+|                 |  link to an aiohttp-based web-server could redirect the br |
+|                 | owser to a different website. It is caused by a bug in the |
+|                 |  `aiohttp.web_middlewares.normalize_path_middleware` middl |
+|                 | eware. This security problem has been fixed in 3.7.4. Upgr |
+|                 | ade your dependency using pip as follows "pip install aioh |
+|                 | ttp >= 3.7.4". If upgrading is not an option for you, a wo |
+|                 | rkaround can be to avoid using `aiohttp.web_middlewares.no |
+|                 |       rmalize_path_middleware` in your applications.       |
++-----------------+------------------------------------------------------------+
+|  Dependency Of  |                          aiohttp                           |
++-----------------+------------------------------------------------------------+
+|     Resolve     |                pip install aiohttp==4.0.0a1                |
++-----------------+------------------------------------------------------------+
+|    More Info    |      https://nvd.nist.gov/vuln/detail/CVE-2021-21330       |
++-----------------+------------------------------------------------------------+
+
+
++-----------------+------------------------------------------------------------+
+|     Package     |                          urllib3                           |
++-----------------+------------------------------------------------------------+
+|    Severity     |                           MEDIUM                           |
++-----------------+------------------------------------------------------------+
+|       CWE       |                            400                             |
++-----------------+------------------------------------------------------------+
+|       CVE       |                       CVE-2021-33503                       |
++-----------------+------------------------------------------------------------+
+| Current version |                           1.25.8                           |
++-----------------+------------------------------------------------------------+
+|    Update To    |                           1.26.9                           |
++-----------------+------------------------------------------------------------+
+|   Description   | An issue was discovered in urllib3 before 1.26.5. When pro |
+|                 | vided with a URL containing many @ characters in the autho |
+|                 | rity component, the authority regular expression exhibits  |
+|                 | catastrophic backtracking, causing a denial of service if  |
+|                 | a URL were passed as a parameter or redirected to via an H |
+|                 |                       TTP redirect.                        |
++-----------------+------------------------------------------------------------+
+|  Dependency Of  |                          urllib3                           |
++-----------------+------------------------------------------------------------+
+|     Resolve     |                pip install urllib3==1.26.9                 |
++-----------------+------------------------------------------------------------+
+|    More Info    |      https://nvd.nist.gov/vuln/detail/CVE-2021-33503       |
++-----------------+------------------------------------------------------------+
+
+
++-----------------+------------------------------------------------------------+
+|     Package     |                          twisted                           |
++-----------------+------------------------------------------------------------+
+|    Severity     |                           MEDIUM                           |
++-----------------+------------------------------------------------------------+
+|       CWE       |                            120                             |
++-----------------+------------------------------------------------------------+
+|       CVE       |                       CVE-2022-21716                       |
++-----------------+------------------------------------------------------------+
+| Current version |                           18.9.0                           |
++-----------------+------------------------------------------------------------+
+|    Update To    |                         22.4.0rc1                          |
++-----------------+------------------------------------------------------------+
+|   Description   | Twisted is an event-based framework for internet applicati |
+|                 | ons, supporting Python 3.6+. Prior to 22.2.0, Twisted SSH  |
+|                 | client and server implement is able to accept an infinite  |
+|                 | amount of data for the peer's SSH version identifier. This |
+|                 |  ends up with a buffer using all the available memory. The |
+|                 |  attach is a simple as `nc -rv localhost 22 < /dev/zero`.  |
+|                 | A patch is available in version 22.2.0. There are currentl |
+|                 |                  y no known workarounds.                   |
++-----------------+------------------------------------------------------------+
+|  Dependency Of  |                          twisted                           |
++-----------------+------------------------------------------------------------+
+|     Resolve     |               pip install twisted==22.4.0rc1               |
++-----------------+------------------------------------------------------------+
+|    More Info    |      https://nvd.nist.gov/vuln/detail/CVE-2022-21716       |
++-----------------+------------------------------------------------------------+
+
+
++-----------------+------------------------------------------------------------+
+|     Package     |                          requests                          |
++-----------------+------------------------------------------------------------+
+|    Severity     |                            HIGH                            |
++-----------------+------------------------------------------------------------+
+|       CWE       |                            502                             |
++-----------------+------------------------------------------------------------+
+|       CVE       |                       CVE-2021-29476                       |
++-----------------+------------------------------------------------------------+
+| Current version |                           2.22.0                           |
++-----------------+------------------------------------------------------------+
+|    Update To    |                           2.27.1                           |
++-----------------+------------------------------------------------------------+
+|   Description   | Requests is a HTTP library written in PHP. Requests mishan |
+|                 | dles deserialization in FilteredIterator. The issue has be |
+|                 | en patched and users of `Requests` 1.6.0, 1.6.1 and 1.7.0  |
+|                 |              should update to version 1.8.0.               |
++-----------------+------------------------------------------------------------+
+|  Dependency Of  |                           safety                           |
++-----------------+------------------------------------------------------------+
+|     Resolve     |                pip install requests==2.27.1                |
++-----------------+------------------------------------------------------------+
+|    More Info    |      https://nvd.nist.gov/vuln/detail/CVE-2021-29476       |
++-----------------+------------------------------------------------------------+
