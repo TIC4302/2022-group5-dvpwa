@@ -13,7 +13,54 @@ jobs:
 
        - name: Build docker-compose
          run: docker-compose -f docker-compose.yml up --build -d
+   sca:
+     runs-on: ubuntu-latest
   
+     steps:
+       - uses: actions/checkout@v2
+       - run: mkdir -p logs/
+
+       - name: Safety
+         run: |
+           pip install safety
+           safety check -r requirements.txt > logs/safetychecked.txt
+       - uses: actions/upload-artifact@v2
+         with:
+           name: logs
+           path: logs/safetychecked.txt
+
+       - name: Pyraider
+         run: |
+           pip install pyraider
+           pyraider check -f app/web/requirements.txt
+            
+       - uses: actions/upload-artifact@v2
+         with:
+             name: logs
+             path: logs/pyraider.json
+
+   test:
+     needs: [build, sca]
+     runs-on: ubuntu-latest
+
+     steps:
+       - uses: actions/checkout@v2
+      
+       - name: Build Image for testing
+         run: docker-compose -f docker-compose.yml up --build -d 
+        
+       - name: Set up Python 3.6
+         uses: actions/setup-python@v1
+         with:
+           python-version: "3.6"
+
+       - name: Install dependencies
+         run: |
+           python -m pip install --upgrade pip
+           pip install -r requirements.txt
+          
+   
+
    deploy:
      needs: [build]
      runs-on: ubuntu-latest
@@ -96,4 +143,6 @@ jobs:
         with:
           target: 'http://localhost:8080'
           cmd_options: '-a -l FAIL'
+
+
 
