@@ -59,15 +59,19 @@ jobs:
        - run: |
            mkdir -p logs/      
       
-       - uses: jpetrucciani/bandit-check@master
+       - name: Security check - Bandit
+         uses: ./
          with:
-           path: '.'
-           bandit_flags: '-lll -o logs/output.json -f json'
-    
-       - uses: actions/upload-artifact@v2
+           python_version: 3.8.10
+           project_path: ~/2022-group5-dvpwa/sqli
+           ignore_failure: false
+
+       - name: Security check report artifacts
+         uses: actions/upload-artifact@v1
+       
          with:
-           name: logs
-           path: logs/output.json
+           name: Bandit report
+           path: logs/banditreport.txt
 
    deploy:
      needs: [build]
