@@ -5,7 +5,7 @@ RUN apk add --no-cache wget \
     && chmod +x /usr/bin/wait-for \
     && apk del wget 
     
-RUN apk update && apk install libxml2-dev libxslt-dev python3-dev
+RUN apk update && apk add libxml2-dev libxslt-dev python3-dev
 
 COPY requirements.txt /tmp
 
