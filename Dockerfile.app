@@ -3,7 +3,9 @@ FROM python:alpine3.8
 RUN apk add --no-cache wget \
     && wget -O /usr/bin/wait-for https://raw.githubusercontent.com/eficode/wait-for/master/wait-for \
     && chmod +x /usr/bin/wait-for \
-    && apk del wget
+    && apk del wget \
+    && apt-get update \
+    && sudo apt-get install libxml2-dev libxslt-dev python3-dev
 
 COPY requirements.txt /tmp
 
