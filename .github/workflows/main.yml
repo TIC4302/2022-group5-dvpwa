@@ -13,6 +13,24 @@ jobs:
 
        - name: Build docker-compose
          run: docker-compose -f docker-compose.yml up --build -d
+
+   secret-scan:
+     runs-on: ubuntu-latest
+
+     steps:
+       - uses: actions/checkout@v2 
+
+       - name: Whispers
+       - run: pip install whispers 
+
+       - name: Repo scan
+       - run: whispers ~/2022-group5-dvpwa > logs/whisper_reposcan.json
+
+       - uses: actions/upload-artifact@v2
+         with:
+             name: Whisper results
+             path: logs
+
    sca:
      runs-on: ubuntu-latest
   
@@ -24,42 +42,16 @@ jobs:
          run: |
            pip install safety
            safety check -r requirements.txt > logs/safetychecked.txt
-       - uses: actions/upload-artifact@v2
-         with:
-           name: logs
-           path: logs/safetychecked.txt
 
        - name: Pyraider
          run: |
            pip install pyraider
-           pyraider check -f app/web/requirements.txt
+           pyraider check -f app/web/requirements.txt > logs/pyraided.txt
             
        - uses: actions/upload-artifact@v2
          with:
              name: logs
-             path: logs/pyraider.json
-
-   test:
-     needs: [build, sca]
-     runs-on: ubuntu-latest
-
-     steps:
-       - uses: actions/checkout@v2
-      
-       - name: Build Image for testing
-         run: docker-compose -f docker-compose.yml up --build -d 
-        
-       - name: Set up Python 3.6
-         uses: actions/setup-python@v1
-         with:
-           python-version: "3.6"
-
-       - name: Install dependencies
-         run: |
-           python -m pip install --upgrade pip
-           pip install -r requirements.txt
-          
-   
+             path: logs
 
    deploy:
      needs: [build]
