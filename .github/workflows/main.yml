@@ -60,14 +60,14 @@ jobs:
            mkdir -p logs/      
       
        - name: Security check - Bandit
-         uses: ./
+         uses: Joel-hanson/bandit-report-artifacts@V1
          with:
            python_version: 3.8.10
            project_path: ~/2022-group5-dvpwa/sqli
            ignore_failure: false
 
        - name: Security check report artifacts
-         uses: actions/checkout@v2
+         uses: actions/upload-artifact@v2
        
          with:
            name: Bandit report
