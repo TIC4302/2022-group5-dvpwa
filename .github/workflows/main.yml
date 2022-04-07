@@ -67,7 +67,7 @@ jobs:
            ignore_failure: false
 
        - name: Security check report artifacts
-         uses: actions/upload-artifact@v1
+         uses: actions/checkout@v2
        
          with:
            name: Bandit report
