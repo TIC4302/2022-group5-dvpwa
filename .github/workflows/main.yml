@@ -43,16 +43,31 @@ jobs:
          run: |
            pip install safety
            safety check -r requirements.txt > logs/safetychecked.txt
-
-       - name: Pyraider
-         run: |
-           pip install pyraider
-           pyraider check -f app/web/requirements.txt > logs/pyraided.txt
             
        - uses: actions/upload-artifact@v2
          with:
-             name: logs
+             name: Safety results
              path: logs
+   
+   sast:
+     needs: [build, sca]
+     runs-on: ubuntu-latest
+
+     steps:
+       - uses: actions/checkout@v2 
+        
+       - run: |
+           mkdir -p logs/      
+      
+       - uses: jpetrucciani/bandit-check@master
+         with:
+           path: '.'
+           bandit_flags: '-lll -o logs/output.json -f json'
+    
+       - uses: actions/upload-artifact@v2
+         with:
+           name: logs
+           path: logs/output.json
 
    deploy:
      needs: [build]
