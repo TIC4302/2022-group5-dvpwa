@@ -4,7 +4,7 @@ services:
   postgres:
     build:
       context: .
-      dockerfile: Dockerfile.db
+      dockerfile: DockerfileDB
     ports:
       - 5432:5432
 
@@ -14,7 +14,7 @@ services:
   sqli:
     build:
       context: .
-      dockerfile: Dockerfile.app
+      dockerfile: DockerfileApp
     depends_on:
       - postgres
       - redis
