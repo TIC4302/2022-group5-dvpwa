@@ -86,14 +86,14 @@ jobs:
          uses: hadolint/hadolint-action@v2.0.0
          with:
            dockerfile: ./DockerfileApp
-           output-file: logs
+           output-file: ./logs/
            no-fail: true
 
        - name: Lint Dockerfile DB
          uses: hadolint/hadolint-action@v2.0.0
          with:
            dockerfile: ./DockerfileDB
-           output-file: logs
+           output-file: ./logs/
            no-fail: true
 
        - name: Upload Report
