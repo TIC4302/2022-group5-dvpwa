@@ -187,8 +187,6 @@ jobs:
 
      steps:
       - uses: actions/checkout@v2
-        with:
-           ref: master
 
       - name: Build Container
         run: docker-compose -f docker-compose.yml up --build -d
@@ -196,7 +194,7 @@ jobs:
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.3.0
         with:
-          target: 'http://127.0.0.1:8080'
+          target: 'http://localhost:8080'
           cmd_options: '-a'
 
 
