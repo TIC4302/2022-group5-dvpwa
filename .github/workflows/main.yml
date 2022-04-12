@@ -126,21 +126,23 @@ jobs:
          with:
            image: mtahgg/4302-project:app
            report-format: json
-           report-name: dockle-report-app
+           report-name: logs/dockle-report-app
 
        - name: Run Dockle on DB
          uses: erzz/dockle-action@v1.2.0
          with:
            image: mtahgg/4302-project:db
            report-format: json
-           report-name: dockle-report-db
+           report-name: logs/dockle-report-db
           
        - name: Upload Report
          uses: actions/upload-artifact@v2
          if: always()
          with:
            name: Dockle Report
-           path: dockle-report.json
+           path: |
+             logs/dockle-report-app
+             logs/dockle-report-db
 
    dast:
      needs: [image-scan]
