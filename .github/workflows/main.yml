@@ -88,7 +88,7 @@ jobs:
          with:
            dockerfile: ./DockerfileApp
            format: json
-           output-file: ./docker-lint-app
+           output-file: ./docker-lint-app.json
            no-fail: true
 
        - name: Lint Dockerfile DB
@@ -96,7 +96,7 @@ jobs:
          with:
            dockerfile: ./DockerfileDB
            format: json
-           output-file: ./docker-lint-db
+           output-file: ./docker-lint-db.json
            no-fail: true
 
        - name: Upload Report
