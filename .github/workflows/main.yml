@@ -87,18 +87,18 @@ jobs:
        - name: Lint App Dockerfile
          uses: hadolint/hadolint-action@v2.0.0
          with:
-           dockerfile: "Dockerfile.app"
+           dockerfile: Dockerfile.app
            no-fail: true
            format: json
-           output-file: logs/
+           output-file: logs/logs/docker-lint-app
 
        - name: Lint DB Dockerfile
          uses: hadolint/hadolint-action@v2.0.0
          with:
-           dockerfile: "Dockerfile.db"
+           dockerfile: Dockerfile.db
            no-fail: true
            format: json
-           output-file: logs/
+           output-file: logs/logs/docker-lint-db
 
        - name: Upload Report
          uses: actions/upload-artifact@v2
