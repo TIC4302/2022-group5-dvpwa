@@ -85,7 +85,7 @@ jobs:
        - run: mkdir -p logs/  
 
        - name: Lint App Dockerfile
-         uses: hadolint/hadolint-action@master
+         uses: hadolint/hadolint-action@v2.0.0
          with:
            dockerfile: "Dockerfile.app"
            no-fail: true
@@ -93,7 +93,7 @@ jobs:
            output-file: logs/docker-lint-app
 
        - name: Lint DB Dockerfile
-         uses: hadolint/hadolint-action@master
+         uses: hadolint/hadolint-action@v2.0.0
          with:
            dockerfile: "Dockerfile.db"
            no-fail: true
