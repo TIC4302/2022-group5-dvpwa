@@ -85,20 +85,16 @@ jobs:
        - run: mkdir -p logs/  
 
        - name: Lint Dockerfile App
-         uses: hadolint/hadolint-action@v2.0.0
+         uses: jbergstroem/hadolint-gh-action@v1
          with:
            dockerfile: ./Dockerfile.app
-           no-fail: true
            format: json
-           output-file: logs/docker-lint-app
 
        - name: Lint Dockerfile DB
-         uses: hadolint/hadolint-action@v2.0.0
+         uses: jbergstroem/hadolint-gh-action@v1
          with:
            dockerfile: ./Dockerfile.db
-           no-fail: true
            format: json
-           output-file: logs/docker-lint-db
 
        - name: Upload Report
          uses: actions/upload-artifact@v2
