@@ -158,7 +158,7 @@ jobs:
            ref: master
 
       - name: Build Container
-        run: docker-compose -f docker-compose.yml up --build -d
+        run: docker-compose up
 
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.3.0
