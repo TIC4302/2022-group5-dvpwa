@@ -75,6 +75,7 @@ jobs:
 
 
    dockerfile-linter:
+     #needs: [secret-scan,sca,sast]
      runs-on: ubuntu-latest
      steps:
 
@@ -177,14 +178,14 @@ jobs:
              logs/dockle-report-db.json
 
    deploy-dast:
-     needs: [image-scan]
+     #needs: [image-scan]
      runs-on: ubuntu-latest
 
      steps:
        - uses: actions/checkout@v2
 
        - name: Build docker-compose
-         run: docker-compose -f docker-compose.yml up --build -d
+         run: docker-compose -f docker-compose.yml up
 
        - name: ZAP Scan
          uses: zaproxy/action-full-scan@v0.3.0
