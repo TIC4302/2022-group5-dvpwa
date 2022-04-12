@@ -89,7 +89,7 @@ jobs:
          with:
            dockerfile: ./DockerfileApp
            format: json
-           output-file: ./logs
+           output-file: docker-lint-app
            no-fail: true
 
        - name: Lint Dockerfile DB
@@ -97,7 +97,7 @@ jobs:
          with:
            dockerfile: ./DockerfileDB
            format: json
-           output-file: ./logs
+           output-file: docker-lint-db
            no-fail: true
 
        - name: Upload Report
@@ -106,8 +106,8 @@ jobs:
          with:
            name: Dockle Report
            path: |
-             logs/docker-lint-app.json
-             logs/docker-lint-db.json
+             docker-lint-app.json
+             docker-lint-db.json
 
    docker-bnp:
      needs: [dockerfile-linter]
@@ -182,7 +182,7 @@ jobs:
              logs/dockle-report-app.json
              logs/dockle-report-db.json
 
-   dast:
+   deploy-dast:
      needs: [image-scan]
      runs-on: ubuntu-latest
 
