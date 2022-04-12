@@ -76,6 +76,7 @@ jobs:
 
 
    dockerfile-linter:
+     needs: [secret-scan,sca,sast]
      runs-on: ubuntu-latest
      steps:
 
@@ -107,7 +108,7 @@ jobs:
              logs/docker-lint-db.json
 
    docker-bnp:
-     needs: [build]
+     needs: [dockerfile-linter]
      runs-on: ubuntu-latest
 
      steps:
@@ -142,7 +143,7 @@ jobs:
            tags: mtahgg/4302-project:db
 
    image-scan:
-     needs: [deploy]
+     needs: [docker-bnp]
      runs-on: ubuntu-latest
   
      steps:
