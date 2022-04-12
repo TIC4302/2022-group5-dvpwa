@@ -1,4 +1,4 @@
-name: CI
+name: group5-dvpwa-DevSecOps
 
 on:
    push:
@@ -169,7 +169,7 @@ jobs:
              logs/dockle-report-db.json
 
    deploy-dast:
-     needs: [image-scan]
+     #needs: [image-scan]
      runs-on: ubuntu-latest
 
      steps:
@@ -182,7 +182,12 @@ jobs:
          uses: zaproxy/action-baseline@v0.6.1
          with:
            target: 'http://localhost:8080'
-           cmd_options: '-a -l WARN'
+           cmd_options: '-l WARN -J report_json'
            fail_action: false
 
-
+       - name: Upload Report
+         uses: actions/upload-artifact@v2
+         if: always()
+         with:
+           name: Zaproxy Report
+           path: report_json
