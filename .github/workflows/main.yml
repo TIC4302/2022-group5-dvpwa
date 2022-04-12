@@ -88,6 +88,7 @@ jobs:
          uses: hadolint/hadolint-action@master
          with:
            dockerfile: "Dockerfile.app"
+           no-fail: true
            format: json
            output-file: logs/docker-lint-app
 
@@ -95,6 +96,7 @@ jobs:
          uses: hadolint/hadolint-action@master
          with:
            dockerfile: "Dockerfile.db"
+           no-fail: true
            format: json
            output-file: logs/docker-lint-db
 
