@@ -145,8 +145,8 @@ jobs:
          with:
            name: Dockle Report
            path: |
-             logs/dockle-report-app
-             logs/dockle-report-db
+             logs/dockle-report-app.json
+             logs/dockle-report-db.json
 
    dast:
      needs: [image-scan]
@@ -161,7 +161,7 @@ jobs:
         run: docker-compose -f docker-compose.yml up --build -d
 
       - name: ZAP Scan
-        uses: zaproxy/action-baseline@v0.6.1
+        uses: zaproxy/action-full-scan@v0.6.1
         with:
           target: 'http://localhost:8080'
           cmd_options: '-a'
