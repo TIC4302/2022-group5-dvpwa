@@ -115,6 +115,10 @@ jobs:
      runs-on: ubuntu-latest
   
      steps:
+       - uses: actions/checkout@v2 
+        
+       - run: mkdir -p logs/
+
        - name: Login to DockerHub
          uses: docker/login-action@v1 
          with:
@@ -153,7 +157,7 @@ jobs:
         with:
            ref: master
 
-      - name: Build docker-compose
+      - name: Build Container
         run: docker-compose -f docker-compose.yml up --build -d
 
       - name: ZAP Scan
