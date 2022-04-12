@@ -76,7 +76,7 @@ jobs:
 
 
    dockerfile-linter:
-     needs: [secret-scan,sca,sast]
+     needs: [build]
      runs-on: ubuntu-latest
      steps:
 
@@ -90,7 +90,7 @@ jobs:
            dockerfile: "Dockerfile.app"
            no-fail: true
            format: json
-           output-file: logs/docker-lint-app
+           output-file: logs/
 
        - name: Lint DB Dockerfile
          uses: hadolint/hadolint-action@v2.0.0
@@ -98,7 +98,7 @@ jobs:
            dockerfile: "Dockerfile.db"
            no-fail: true
            format: json
-           output-file: logs/docker-lint-db
+           output-file: logs/
 
        - name: Upload Report
          uses: actions/upload-artifact@v2
