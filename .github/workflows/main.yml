@@ -86,14 +86,14 @@ jobs:
          uses: hadolint/hadolint-action@v2.0.0
          with:
            dockerfile: ./DockerfileApp
-           output-file: ./logs/docker-lint-app
+           format: json
            no-fail: true
 
        - name: Lint Dockerfile DB
          uses: hadolint/hadolint-action@v2.0.0
          with:
            dockerfile: ./DockerfileDB
-           output-file: ./logs/docker-lint-db
+           format: json
            no-fail: true
 
        - name: Upload Report
@@ -101,9 +101,7 @@ jobs:
          if: always()
          with:
            name: Hadolint Report
-           path: |
-             docker-lint-app.json
-             docker-lint-db.json
+           path: .
 
    docker-bnp:
      needs: [dockerfile-linter]
