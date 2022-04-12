@@ -15,6 +15,7 @@ jobs:
          run: docker-compose -f docker-compose.yml up --build -d
 
    secret-scan:
+     needs: [build]
      runs-on: ubuntu-latest
 
      steps:
@@ -33,6 +34,7 @@ jobs:
              path: logs
 
    sca:
+     needs: [build]
      runs-on: ubuntu-latest
   
      steps:
@@ -50,7 +52,7 @@ jobs:
              path: logs
    
    sast:
-     needs: [build, sca]
+     needs: [build]
      runs-on: ubuntu-latest
 
      steps:
@@ -155,7 +157,7 @@ jobs:
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.6.1
         with:
-          target: '127.0.0.1:8080'
+          target: 'http://localhost:8080'
           cmd_options: '-a'
 
 
