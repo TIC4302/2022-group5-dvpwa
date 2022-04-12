@@ -88,6 +88,7 @@ jobs:
          with:
            dockerfile: ./DockerfileApp
            format: json
+           output-file: ./docker-lint-app
            no-fail: true
 
        - name: Lint Dockerfile DB
@@ -95,6 +96,7 @@ jobs:
          with:
            dockerfile: ./DockerfileDB
            format: json
+           output-file: ./docker-lint-db
            no-fail: true
 
        - name: Upload Report
@@ -184,16 +186,15 @@ jobs:
      runs-on: ubuntu-latest
 
      steps:
-      - uses: actions/checkout@v2
+       - uses: actions/checkout@v2
 
-      - name: Build Container
-        run: docker-compose -f docker-compose.yml up --build -d
+       - name: Build docker-compose
+         run: docker-compose -f docker-compose.yml up --build -d
 
-      - name: ZAP Scan
-        uses: zaproxy/action-full-scan@v0.3.0
-        with:
-          target: 'http://localhost:8080'
-          cmd_options: '-a'
-
+       - name: ZAP Scan
+          uses: zaproxy/action-full-scan@v0.3.0
+          with:
+            target: 'http://localhost:8080'
+            cmd_options: '-a -l FAIL'
 
 
