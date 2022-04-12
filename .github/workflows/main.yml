@@ -75,7 +75,7 @@ jobs:
            path: logs/banditreport.txt
 
 
-   dockerfile linter:
+   dockerfile-linter:
      runs-on: ubuntu-latest
      steps:
 
@@ -106,7 +106,7 @@ jobs:
              logs/docker-lint-app.json
              logs/docker-lint-db.json
 
-   docker bnp:
+   docker-bnp:
      needs: [build]
      runs-on: ubuntu-latest
 
