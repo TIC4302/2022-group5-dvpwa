@@ -182,13 +182,6 @@ jobs:
          uses: zaproxy/action-full-scan@v0.3.0
          with:
            target: 'http://localhost:8080'
-           cmd_options: 'a -l WARN -J report_json'
+           cmd_options: 'a -l WARN'
            allow_issue_writing: false
            fail_action: false
-
-       - name: Upload Report
-         uses: actions/upload-artifact@v2
-         if: always()
-         with:
-           name: Zaproxy Report
-           path: report_json
