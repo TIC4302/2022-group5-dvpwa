@@ -169,7 +169,7 @@ jobs:
              logs/dockle-report-db.json
 
    deploy-dast:
-     #needs: [image-scan]
+     needs: [image-scan]
      runs-on: ubuntu-latest
 
      steps:
