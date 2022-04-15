@@ -5,17 +5,7 @@ on:
      branches: [master]
 
 jobs:
-   build:
-     runs-on: ubuntu-latest
-
-     steps:
-       - uses: actions/checkout@v2
-
-       - name: Build docker-compose
-         run: docker-compose -f docker-compose.yml up --build -d
-
    secret-scan:
-     needs: [build]
      runs-on: ubuntu-latest
 
      steps:
@@ -32,6 +22,16 @@ jobs:
          with:
              name: Whisper results
              path: logs
+
+   build:
+     needs: [secret-scan]
+     runs-on: ubuntu-latest
+
+     steps:
+       - uses: actions/checkout@v2
+
+       - name: Build docker-compose
+         run: docker-compose -f docker-compose.yml up --build -d
 
    sca:
      needs: [build]
@@ -75,7 +75,7 @@ jobs:
 
 
    dockerfile-linter:
-     needs: [secret-scan,sca,sast]
+     needs: [sca,sast]
      runs-on: ubuntu-latest
      steps:
 
