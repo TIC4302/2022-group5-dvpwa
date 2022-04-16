@@ -75,7 +75,7 @@ jobs:
 
 
    dockerfile-linter:
-     needs: [sca,sast]
+     #needs: [sca,sast]
      runs-on: ubuntu-latest
      steps:
 
