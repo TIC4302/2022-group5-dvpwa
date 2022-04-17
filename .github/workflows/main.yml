@@ -81,8 +81,6 @@ jobs:
 
        - uses: actions/checkout@v2
 
-       - run: mkdir -p logs/  
-
        - name: Lint Dockerfile App
          uses: hadolint/hadolint-action@v2.0.0
          with:
@@ -130,7 +128,7 @@ jobs:
            push: true
            tags: mtahgg/4302-project:db
 
-   image-scan:
+   container-scan:
      needs: [docker-bnp]
      runs-on: ubuntu-latest
   
