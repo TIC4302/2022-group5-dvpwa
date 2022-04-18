@@ -75,7 +75,7 @@ jobs:
        - name: Bandit report
          uses: actions/upload-artifact@v2      
          with:
-           name: logs
+           name: bandit
            path: logs/banditreport.json
 
 
