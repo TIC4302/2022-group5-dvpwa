@@ -71,7 +71,7 @@ jobs:
          uses: actions/upload-artifact@v2      
          with:
            name: Bandit report
-           path: logs/banditreport.txt
+           path: ~/2022-group5-dvpwa/logs/banditreport.txt
 
 
    dockerfile-linter:
