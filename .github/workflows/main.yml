@@ -56,35 +56,20 @@ jobs:
      runs-on: ubuntu-latest
 
      steps:
-       #- uses: actions/checkout@v2 
-       #- name: Security check - Bandit
-       - uses: actions/checkout@v2
+ 
+       - uses: actions/checkout@v2 
+       - name: Security check - Bandit
+         uses: Joel-hanson/bandit-report-artifacts@V1
          with:
-          fetch-depth: 0 #get fuller history
-       - run: mkdir -p logs/
-          
-       - name: Run Bandit Report
-         uses: libertyy/py3-bandit-check@v2
-         with:
-            target_dir: ~/2022-group5-dvpwa/sqli
-         
-       - name: Save Bandit txt Report
-         if: ${{ always() }}
-         uses: actions/upload-artifact@v2
-         with:
-            target_dir: ~/2022-group5-dvpwa/sqli
-            path: ${{ RUNNER.temp }}~/2022-group5-dvpwa/logs/banditreport.out
-         #uses: Joel-hanson/bandit-report-artifacts@V1
-         #with:
-           #python_version: 3.8.10
-           #project_path: ~/2022-group5-dvpwa/sqli
-           #ignore_failure: false
+           python_version: 3.8.10
+           project_path: ~/2022-group5-dvpwa/sqli
+           ignore_failure: false
 
-       #- name: Security check report artifacts
-         #uses: actions/upload-artifact@v2      
-         #with:
-           #name: Bandit report
-           #path: ~/2022-group5-dvpwa/logs/banditreport.txt
+       - name: Security check report artifacts
+         uses: actions/upload-artifact@v2      
+         with:
+           name: Bandit report
+           path: ~/2022-group5-dvpwa/logs/
 
 
    dockerfile-linter:
