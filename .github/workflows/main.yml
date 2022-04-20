@@ -170,7 +170,7 @@ jobs:
              logs/dockle-report-db.json
 
    deploy-dast:
-     #needs: [container-scan]
+     needs: [container-scan]
      runs-on: ubuntu-latest
 
      steps:
