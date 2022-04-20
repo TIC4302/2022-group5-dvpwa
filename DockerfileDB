@@ -1,8 +1,4 @@
 FROM postgres:9.6.15-alpine
 
-RUN adduser -S -s /bin/bash -g root -G wheel -u 1002 developer
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN echo 'developer:developer' | chpasswd
-
 ENV POSTGRES_DB sqli
 COPY ./migrations/* /docker-entrypoint-initdb.d/
