@@ -16,10 +16,7 @@ jobs:
          run: pip install whispers 
 
        - name: Repo scan
-         run: |
-             whispers ~/2022-group5-dvpwa 
-             whispers --config config.yml ~/2022-group5-dvpwa
-             whispers --output whisperoutput.yml ~/2022-group5-dvpwa/logs
+         run: whispers --config config.yml .  --output whisperoutput.yml logs/
 
        - uses: actions/upload-artifact@v2
          with:
