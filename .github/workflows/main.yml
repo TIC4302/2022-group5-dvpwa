@@ -16,7 +16,7 @@ jobs:
          run: pip install whispers 
 
        - name: Repo scan
-         run: whispers -c config.yml ~/2022-group5-dvpwa > logs/whisper_reposcan.json
+         run: whispers -c config.yml . > logs/whisper_reposcan.json
 
        - uses: actions/upload-artifact@v2
          with:
@@ -66,12 +66,6 @@ jobs:
          with:
            path: ./
            bandit_flags: '-o logs/banditreport.json -f json'
-
-         #uses: Joel-hanson/bandit-report-artifacts@V1
-         #with:
-           #python_version: 3.8.10
-           #project_path: ~/2022-group5-dvpwa/sqli
-           #ignore_failure: false
 
        - name: Bandit report
          uses: actions/upload-artifact@v2      
@@ -173,7 +167,7 @@ jobs:
              logs/dockle-report-db.json
 
    deploy-dast:
-     needs: [container-scan]
+     #needs: [container-scan]
      runs-on: ubuntu-latest
 
      steps:
@@ -187,6 +181,6 @@ jobs:
          with:
            target: 'http://localhost:8080'
            cmd_options: 'a -l WARN'
-           rules_file_name: './zapexclude.txt'
+           rules_file_name: 'zapexclude.tsv'
            allow_issue_writing: false
            fail_action: false
