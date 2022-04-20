@@ -62,8 +62,8 @@ jobs:
 
        - name: Security check - Bandit
          uses: jpetrucciani/bandit-check@master
+         continue-on-error: true
          with:
-           continue-on-error: true
            path: ./
            bandit_flags: '-o logs/banditreport.json -f json'
 
