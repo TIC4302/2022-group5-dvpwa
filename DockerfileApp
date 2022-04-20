@@ -12,9 +12,8 @@ COPY requirements.txt /tmp
 RUN apk add --no-cache --virtual build-deps gcc=6.4.0-r9 python3-dev=3.6.9-r1 musl-dev=1.1.19-r11 \
     && apk add --no-cache postgresql-dev=10.12-r0 \
     && pip install --no-cache-dir -r /tmp/requirements.txt \
-    && apk del build-deps
-
-RUN rm -rf /tmp/requirements.txt
+    && apk del build-deps \
+    && rm -rf /tmp/requirements.txt 
 
 RUN adduser -D developer
 USER developer
