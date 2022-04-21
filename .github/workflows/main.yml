@@ -16,12 +16,12 @@ jobs:
          run: pip install whispers 
 
        - name: Repo scan
-         run: whispers --config config.yml .  --output whisperoutput.yml logs/
+         run: whispers . --config config.yml --output logs/whisperoutput.txt
 
        - uses: actions/upload-artifact@v2
          with:
              name: Whisper results
-             path: logs
+             path: logs/whisperoutput.txt
 
    build:
      needs: [secret-scan]
@@ -70,7 +70,7 @@ jobs:
        - name: Bandit report
          uses: actions/upload-artifact@v2      
          with:
-           name: bandit
+           name: Bandit results
            path: logs/banditreport.json
 
 
@@ -166,7 +166,7 @@ jobs:
              logs/dockle-report-app.json
              logs/dockle-report-db.json
 
-   deploy-dast:
+   dast:
      needs: [container-scan]
      runs-on: ubuntu-latest
 
