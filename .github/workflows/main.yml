@@ -181,5 +181,5 @@ jobs:
          with:
            target: 'http://localhost:8080'
            cmd_options: 'a -l WARN'
-           rules_file_name: 'zapexclude.tsv'
+           rules_file_name: 'zapexclude.txt'
            allow_issue_writing: false
