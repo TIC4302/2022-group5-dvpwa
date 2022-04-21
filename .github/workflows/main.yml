@@ -183,4 +183,3 @@ jobs:
            cmd_options: 'a -l WARN'
            rules_file_name: 'zapexclude.tsv'
            allow_issue_writing: false
-           fail_action: false
