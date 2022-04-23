@@ -180,6 +180,5 @@ jobs:
          uses: zaproxy/action-baseline@v0.6.1
          with:
            target: 'http://localhost:8080'
-           cmd_options: 'a -l WARN'
-           rules_file_name: 'zapexclude.txt'
+           cmd_options: 'a -l WARN -c zapexclude.txt'
            allow_issue_writing: false
