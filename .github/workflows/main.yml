@@ -177,8 +177,8 @@ jobs:
          run: docker-compose -f docker-compose.yml up --build -d
 
        - name: ZAP Scan
-         uses: zaproxy/action-full-scan@v0.3.0
+         uses: zaproxy/action-baseline@v0.6.1
          with:
            target: 'http://localhost:8080'
-           cmd_options: 'a -l WARN -c zapexclude.txt'
+           cmd_options: 'a -l WARN'
            allow_issue_writing: false
