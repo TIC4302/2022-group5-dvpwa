@@ -2,6 +2,11 @@
 DVPWA -- Damn Vulnerable Python Web Application
 ===============================================
 
+Group 5 project slides
+===========
+
+./TIC4302 - Group 5 - DVPWA.pdf
+
 Description
 ===========
 
