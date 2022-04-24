@@ -8,7 +8,7 @@ RUN apk add --no-cache wget=1.20.3-r0 \
 RUN apk add --no-cache libxml2-dev=2.9.8-r2 libxslt-dev=1.1.33-r3 python3-dev=3.6.9-r1
 
 COPY requirements.txt /tmp
-RUN apk add --update musl-dev gcc libffi-dev
+RUN apk add --no-cache --update musl-dev gcc libffi-dev
 
 RUN apk add --no-cache --virtual build-deps gcc=6.4.0-r9 python3-dev=3.6.9-r1 musl-dev=1.1.19-r11 \
     && apk add --no-cache postgresql-dev=10.12-r0 \
