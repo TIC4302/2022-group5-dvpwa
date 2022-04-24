@@ -6,6 +6,7 @@ Group 5 project slides
 ===========
 
 ./TIC4302 - Group 5 - DVPWA.pdf
+https://github.com/TIC4302/2022-group5-dvpwa/blob/master/TIC4302%20-%20Group%205%20-%20DVPWA.pdf
 
 Description
 ===========
