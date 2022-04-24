@@ -41,5 +41,5 @@ class User(NamedTuple):
         bytePwd = password.encode('utf-8')
         mySalt = bcrypt.gensalt()
         self.pwd_hash = bcrypt.hashpw(bytePwd, mySalt)
-        return self.pwd_hash == bcrypt.checkpw(password,self.pwd_hash)
+        return self.pwd_hash == bcrypt.checkpw(password,self.pwd_hash) #check is pwd matches hash
         #return self.pwd_hash == md5(password.encode('utf-8')).hexdigest()
